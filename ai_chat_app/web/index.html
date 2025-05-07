@@ -18,7 +18,7 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="AI Chat App - 一个基于Flutter的AI聊天应用">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -29,10 +29,70 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>ai_chat_app</title>
+  <title>AI Chat App</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- 添加自定义样式 -->
+  <style>
+    body {
+      background-color: #121212;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top-color: #4285F4;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <!-- 添加加载动画 -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">AI Chat App 正在加载中...</div>
+  </div>
+
+  <script>
+    // 在Flutter应用加载完成后隐藏加载动画
+    window.addEventListener('flutter-first-frame', function() {
+      var loadingElement = document.getElementById('loading');
+      if (loadingElement) {
+        loadingElement.remove();
+      }
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
+  <script src="main.dart.js" defer></script>
 </body>
 </html>
